@@ -7,7 +7,6 @@ use system\library\Benchmark;
 use system\library\Uri;
 use system\library\Input;
 use system\library\render\Render;
-use system\library\log\Log;
 
 
 if (!defined("SELF") || !defined("APP_PATH")) {
@@ -68,7 +67,7 @@ if (IS_CLI) {
     header('X-Powered-By: AtomCode v' . VERSION);
 }
 
-$__LANGUAGE_PACKAGE = array(); // Language Support
+
 if (function_exists("set_time_limit") == TRUE && @ini_get("safe_mode") == 0 && PHP_SAPI != 'cli') {
     @set_time_limit(60);
 }
@@ -134,8 +133,8 @@ if (get_config('view_path_decision') && ($__key = get_config('view_path_decision
 // Reset Input
 Input::instance();
 
-require BASE_PATH . '/core/Controller.php';
-require BASE_PATH . '/core/Model.php';
+//require BASE_PATH . '/core/Controller.php';
+//require BASE_PATH . '/core/Model.php';
 
 // Load the local application controller
 $segments = array_values($segments);
@@ -194,9 +193,11 @@ $__CTRL = APP_PATH . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 
 
 if (!file_exists($__CTRL)) {
     show_404();
+}else{
+    include ($__CTRL);
 }
 
-include ($__CTRL);
+
 unset($__CTRL);
 
 /*
