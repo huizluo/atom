@@ -43,7 +43,7 @@ defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH . 'runtime' . DS);
 
 require (BASE_PATH . '/core/common.php');
 if (!is_php()) {
-    exit('AtomCode need php5.3 or newer.');
+    exit('Atom need php5.6 or newer.');
 }
 
 
@@ -64,7 +64,7 @@ if (get_config('enable_benchmark')) {
 if (IS_CLI) {
     chdir(dirname(SELF));
 } else {
-    header('X-Powered-By: AtomCode v' . VERSION);
+    header('X-Powered-By: Atom v' . VERSION);
 }
 
 
